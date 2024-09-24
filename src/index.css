@@ -1,0 +1,330 @@
+/* General styles */
+* {
+  font-family: Arial, sans-serif; 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #000000, #323232);
+  min-height: 100vh;
+}
+
+.total-tasks{
+  margin-top: 1rem;
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.btn{
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 25%;
+  padding-block: 1rem;
+  margin-inline: auto;
+  font-size: 1rem;
+}
+
+.container .add-task-btn {
+  background: #00f445;
+  &:hover{
+    background: #00f44582;
+  }
+}
+
+.container .clone-task-btn {
+  background: #004df4;
+  &:hover{
+    background: #004df482;
+  }
+
+  &:disabled{
+    background: #004df434;
+    cursor: not-allowed;
+  }
+}
+
+.clone-task-text{
+  margin-top: 1rem;
+  color: #fff;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+ul {
+  list-style: none;
+  padding-block: 5rem;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.container {
+  width: 90%;
+  padding-inline: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  overflow: hidden;
+}
+
+.board-body{
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  overflow: hidden;
+}
+
+
+/* Task css */
+
+.task-card {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.46);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.task-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+}
+
+.task-card h3 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.task-status {
+  margin: 10px 0;
+  font-size: 1.2em;
+  color: #ddd;
+}
+
+.task-description {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.8s ease-in-out;
+  color: #fff;  
+}
+
+.task-card:hover .task-description {
+  max-height: 200px;
+}
+
+.task-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.task-actions button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  background-color:rgb(0, 34, 255);
+  color: #fff;
+}
+
+.task-actions button:hover {
+  background: rgba(0, 34, 255, 0.825);
+}
+
+.task-actions button:nth-child(1) {
+  background: rgba(255, 0, 0, 0.662);
+}
+
+.task-actions button:nth-child(1):hover {
+  background: rgb(255, 0, 0);
+}
+
+/* Status-based styles */
+.task-card.completed {
+  background: rgba(0, 128, 0, 0.46);
+  border: 1px solid rgba(0, 255, 0, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 255, 0, 0.37);
+}
+
+.task-card.completed .task-status {
+  color: #00ff00;
+}
+
+.task-card.pending {
+  background: rgba(255, 165, 0, 0.46);
+  border: 1px solid rgba(255, 215, 0, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(255, 215, 0, 0.37);
+}
+
+.task-card.pending .task-status {
+  color: #ffa500;
+}
+
+.task-card.in-progress {
+  background: rgba(0, 0, 255, 0.46);
+  border: 1px solid rgba(0, 0, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 255, 0.37);
+}
+
+.task-card.in-progress .task-status {
+  color: #0000ff;
+}
+/* Task form css */
+
+
+.task-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #323232, #000000);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.task-modal-content {
+  max-width: 600px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: relative;
+  color: #fff;
+}
+
+.task-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.task-modal-form input,
+.task-modal-form select,
+.task-modal-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.task-modal-form input:focus,
+.task-modal-form select:focus,
+.task-modal-form textarea:focus {
+  border-color: #6c63ff;
+  outline: none;
+}
+
+.task-modal-form-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-modal-form-status label {
+  font-size: 16px;
+  color: #fff;
+}
+
+.task-modal-form button[type="submit"] {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  color: #fff;
+}
+
+.task-modal-form button[type="submit"].create-button {
+  background: #4caf50;
+}
+
+.task-modal-form button[type="submit"].create-button:hover {
+  background: #43a047;
+}
+
+.task-modal-form button[type="submit"].update-button {
+  background: #ff9800;
+}
+
+.task-modal-form button[type="submit"].update-button:hover {
+  background: #f57c00;
+}
+
+.task-modal-content button {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+.task-modal-content button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Style for options */
+.task-modal-form select option {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-size: 16px;
+}
+
+.close-btn{
+  background-color: #ff0000 !important;
+  width: 100%;
+  padding-block: 1rem;
+  font-size: 1rem;
+
+  &:hover{
+    background-color: #ff00008b !important;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .task-modal-content {
+    max-width: 90%;
+  }
+}
